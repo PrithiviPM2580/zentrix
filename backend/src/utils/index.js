@@ -7,3 +7,8 @@ export const MODEL = Object.freeze({
 });
 
 export const DEFAULT_MODEL = MODEL.GEMI_FLASH_LITE;
+
+export function globalErrorHandler(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).json({ error: "Something went wrong!" });
+}
