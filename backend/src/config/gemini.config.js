@@ -1,8 +1,9 @@
+import "dotenv/config";
 import { GoogleGenAI } from "@google/genai";
-import { DEFAULT_MODEL } from "../utils";
+import { DEFAULT_MODEL, MODEL } from "../utils/index.js";
 
 const ai = new GoogleGenAI({
-  apiKey: process.env.GOOGLE_API_KEY,
+  apiKey: process.env.GEMINI_API_KEY,
 });
 
 export async function generateResponse(prompt, model = DEFAULT_MODEL) {
@@ -14,7 +15,7 @@ export async function generateResponse(prompt, model = DEFAULT_MODEL) {
 
     return respone.text;
   } catch (error) {
-    throw error;
     console.error("Error generating response:", error);
+    throw error;
   }
 }

@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
+import connectDB from "./config/db.config.js";
 // import { ai } from "./config/gemini.config.js";
 
 const app = express();
@@ -11,6 +12,8 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
+
+await connectDB();
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
